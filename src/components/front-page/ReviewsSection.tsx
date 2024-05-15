@@ -51,7 +51,7 @@ const UserReview = ({ children, username, userImg }: UserReviewProps) => {
     <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
       <div className="flex gap-0.5 mb-2">
         {new Array(5).fill(0).map((_, i) => (
-          <Star className="h-5 w-5 text-green-600 fill-green-600" />
+          <Star key={i} className="h-5 w-5 text-green-600 fill-green-600" />
         ))}
       </div>
       <div className="text-lg leading-8">{children}</div>
