@@ -1,6 +1,7 @@
 import { Star, Check } from "lucide-react"
 import { Icons } from "../Icons"
 import MaxWidthWrapper from "../MaxWidthWrapper"
+import { AnimatedReviews } from "./AnimatedReviews"
 
 const ReviewsSection = () => {
   return (
@@ -36,7 +37,9 @@ const ReviewsSection = () => {
         </div>
       </MaxWidthWrapper>
 
-      <div className="pt-16">{/* <Reviews /> */}</div>
+      <div className="pt-16">
+        <AnimatedReviews />
+      </div>
     </section>
   )
 }
