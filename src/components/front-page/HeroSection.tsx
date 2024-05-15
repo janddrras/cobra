@@ -21,43 +21,29 @@ const HeroSection = () => {
             </p>
 
             <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
-              <div className="space-y-2">
-                <li className="flex gap-1.5 items-center text-left">
-                  <Check className="h-5 w-5 shrink-0 text-green-600" />
-                  High-quality, durable material
-                </li>
-                <li className="flex gap-1.5 items-center text-left">
-                  <Check className="h-5 w-5 shrink-0 text-green-600" />5 year print guarantee
-                </li>
-                <li className="flex gap-1.5 items-center text-left">
-                  <Check className="h-5 w-5 shrink-0 text-green-600" />
-                  Modern iPhone models supported
-                </li>
-              </div>
+              <CheckList>High-quality silicone material</CheckList>
+              <CheckList>5 year print guarantee</CheckList>
+              <CheckList>Modern iPhone models supported</CheckList>
             </ul>
 
             <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
               <div className="flex -space-x-4">
-                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100" src="/users/user-1.png" alt="user image" />
-                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100" src="/users/user-2.png" alt="user image" />
-                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100" src="/users/user-3.png" alt="user image" />
-                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100" src="/users/user-4.jpg" alt="user image" />
-                <img
-                  className="inline-block object-cover h-10 w-10 rounded-full ring-2 ring-slate-100"
-                  src="/users/user-5.jpg"
-                  alt="user image"
-                />
+                {new Array(5).fill(0).map((_, i) => (
+                  <img
+                    key={i}
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100"
+                    src={`/users/user-${i + 1}.png`}
+                    alt="user image"
+                  />
+                ))}
               </div>
 
               <div className="flex flex-col justify-between items-center sm:items-start">
                 <div className="flex gap-0.5">
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                  <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                  {new Array(5).fill(0).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 text-green-600 fill-green-600" />
+                  ))}
                 </div>
-
                 <p>
                   <span className="font-semibold">1.250</span> happy customers
                 </p>
@@ -75,6 +61,15 @@ const HeroSection = () => {
         </div>
       </MaxWidthWrapper>
     </section>
+  )
+}
+
+const CheckList = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <li className="flex gap-1.5 items-center text-left">
+      <Check className="h-5 w-5 shrink-0 text-green-600" />
+      {children}
+    </li>
   )
 }
 
