@@ -3,6 +3,7 @@
 import { STEPS } from "@/lib/constants"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
+import { Icons } from "../Icons"
 
 const Steps = () => {
   const pathname = usePathname()
@@ -49,12 +50,9 @@ const Steps = () => {
                 </span>
               </span>
 
-              {/* separator */}
               {i !== 0 ? (
                 <div className="absolute inset-0 hidden w-3 lg:block">
-                  <svg className="h-full w-full text-gray-300" viewBox="0 0 12 82" fill="none" preserveAspectRatio="none">
-                    <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor" vectorEffect="non-scaling-stroke" />
-                  </svg>
+                  <Icons.stepSeparator className="h-full w-full text-gray-300" />
                 </div>
               ) : null}
             </div>
