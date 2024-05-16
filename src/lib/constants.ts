@@ -14,7 +14,7 @@ export const STEPS = [
     description: "Review your final design",
     url: "/preview"
   }
-] as const
+]
 
 export const PHONES = [
   "/testimonials/1.jpg",
