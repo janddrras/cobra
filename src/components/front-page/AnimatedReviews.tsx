@@ -1,6 +1,6 @@
 "use client"
 
-import { PHONES } from "@/lib/constants"
+import { PHONES } from "@/lib/options/constants"
 import { HTMLAttributes, useEffect, useRef, useState } from "react"
 import MaxWidthWrapper from "@/components/MaxWidthWrapper"
 import { useInView } from "framer-motion"

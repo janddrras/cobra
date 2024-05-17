@@ -1,6 +1,6 @@
 "use client"
 
-import { STEPS } from "@/lib/constants"
+import { STEPS } from "@/lib/options/constants"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
 import { Icons } from "../Icons"
