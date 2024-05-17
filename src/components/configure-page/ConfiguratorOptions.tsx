@@ -1,11 +1,11 @@
 import { COLORS, MODELS, MATERIALS, FINISHES, type TConfiguratorOptions } from "@/lib/options/config-options"
 import { cn, formatPrice } from "@/lib/utils"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
-import { Label } from "@radix-ui/react-label"
+import { Label } from "@/components/ui/label"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { ChevronsUpDown, Check } from "lucide-react"
 import { Button } from "../ui/button"
-import { RadioGroup, Label as RadioLabel, Description } from "@headlessui/react"
+import { RadioGroup, Label as RadioLabel, Radio, Description } from "@headlessui/react"
 import React from "react"
 
 interface ConfigArgs {
@@ -37,20 +37,20 @@ const ConfiguratorOptions = ({ options, setOptions }: ConfigArgs) => {
               <Label>Color: {options.color.label}</Label>
               <div className="mt-3 flex items-center space-x-3">
                 {COLORS.map((color) => (
-                  <RadioGroup.Option
+                  <Radio
                     key={color.label}
                     value={color}
-                    className={({ active, checked }) =>
+                    className={({ checked }) =>
                       cn(
                         "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-transparent",
                         {
-                          [`border-${color.tw}`]: active || checked
+                          [`border-${color.tw}`]: checked
                         }
                       )
                     }
                   >
                     <span className={cn(`bg-${color.tw}`, "h-8 w-8 rounded-full border border-black border-opacity-10")} />
-                  </RadioGroup.Option>
+                  </Radio>
                 ))}
               </div>
             </RadioGroup>
@@ -97,14 +97,14 @@ const ConfiguratorOptions = ({ options, setOptions }: ConfigArgs) => {
                 <Label>{name.slice(0, 1).toUpperCase() + name.slice(1)}</Label>
                 <div className="mt-3 space-y-4">
                   {selectableOptions.map((option) => (
-                    <RadioGroup.Option
+                    <Radio
                       key={option.value}
                       value={option}
-                      className={({ active, checked }) =>
+                      className={({ checked }) =>
                         cn(
                           "relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between",
                           {
-                            "border-primary": active || checked
+                            "border-primary": checked
                           }
                         )
                       }
@@ -116,17 +116,17 @@ const ConfiguratorOptions = ({ options, setOptions }: ConfigArgs) => {
                           </RadioLabel>
 
                           {option.description ? (
-                            <RadioGroup.Description as="span" className="text-gray-500">
-                              <span className="block sm:inline">{option.description}</span>
-                            </RadioGroup.Description>
+                            <Description as="span" className="text-gray-500 block sm:inline">
+                              {option.description}
+                            </Description>
                           ) : null}
                         </span>
                       </span>
 
-                      <RadioGroup.Description as="span" className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right">
+                      <Description as="span" className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right">
                         <span className="font-medium text-gray-900">{formatPrice(option.price / 100)}</span>
-                      </RadioGroup.Description>
-                    </RadioGroup.Option>
+                      </Description>
+                    </Radio>
                   ))}
                 </div>
               </RadioGroup>

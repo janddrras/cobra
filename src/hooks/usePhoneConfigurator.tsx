@@ -1,4 +1,4 @@
-import { SaveConfigArgs, saveConfig as _saveConfig } from "@/actions/phoneConfigAction"
+import { SaveConfigArgs, saveConfigAction } from "@/actions/phoneConfigAction"
 import { useToast } from "@/components/ui/use-toast"
 import { COLORS, FINISHES, MATERIALS, MODELS, type TConfiguratorOptions } from "@/lib/options/config-options"
 import { useUploadThing } from "@/lib/uploadthing"
@@ -21,7 +21,7 @@ const usePhoneConfigurator = ({ phoneCaseRef, containerRef, configId, imageDimen
   const { mutate: saveConfig, isPending } = useMutation({
     mutationKey: ["save-config"],
     mutationFn: async (args: SaveConfigArgs) => {
-      await Promise.all([saveConfiguration(), _saveConfig(args)])
+      await Promise.all([saveConfiguration(), saveConfigAction(args)])
     },
     onError: () => {
       toast({
@@ -101,16 +101,7 @@ const usePhoneConfigurator = ({ phoneCaseRef, containerRef, configId, imageDimen
     return new Blob([byteArray], { type: mimeType })
   }
 
-  return {
-    options,
-    setOptions,
-    renderedDimension,
-    setRenderedDimension,
-    renderedPosition,
-    setRenderedPosition,
-    saveConfig,
-    isPending
-  }
+  return { options, setOptions, setRenderedDimension, setRenderedPosition, saveConfig, isPending }
 }
 
 export default usePhoneConfigurator
