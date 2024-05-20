@@ -17,7 +17,7 @@ interface DesignPreviewProps {
 
 const DesignPreview = ({ configuration }: DesignPreviewProps) => {
   const [showConfetti, setShowConfetti] = useState<boolean>(false)
-  useEffect(() => setShowConfetti(true))
+  useEffect(() => setShowConfetti(true), [])
 
   const { modelLabel, tw, totalPrice, handleCheckout, isLoginModalOpen, setIsLoginModalOpen } = usePreviewAndPayment({
     config: configuration
